@@ -1,0 +1,5 @@
+name: AntiDrop
+version: ${project.version}
+main: me.glaremasters.antidrop.AntiDrop
+authors: [blockslayer22]
+description: AntiDrop
