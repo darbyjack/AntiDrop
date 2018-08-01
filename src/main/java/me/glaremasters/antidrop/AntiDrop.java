@@ -9,6 +9,7 @@ public final class AntiDrop extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         getServer().getPluginManager().registerEvents(this, this);
 
     }
@@ -20,6 +21,8 @@ public final class AntiDrop extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
-        event.setCancelled(event.getPlayer().hasPermission("antidrop.nodrop"));
+        if (getConfig().getString("blocked-items").contains(event.getItemDrop().getItemStack().getType().toString())) {
+            event.setCancelled(event.getPlayer().hasPermission("antidrop.nodrop"));
+        }
     }
 }
